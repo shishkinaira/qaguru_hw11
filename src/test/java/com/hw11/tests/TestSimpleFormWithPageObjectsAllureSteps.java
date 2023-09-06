@@ -1,12 +1,13 @@
-package com.hw7.tests;
-import com.hw7.pages.SimpleFormWithPageObjects;
+package com.hw11.tests;
+import com.hw11.pages.SimpleFormWithPageObjectsSteps;
 import org.junit.jupiter.api.Test;
+import static io.qameta.allure.Allure.step;
 
-public class TestSimpleFormWithPageObjects extends TestBase {
-    SimpleFormWithPageObjects simpleFormWithPageObjects = new SimpleFormWithPageObjects();
+public class TestSimpleFormWithPageObjectsAllureSteps {
+    SimpleFormWithPageObjectsSteps simpleFormWithPageObjects = new SimpleFormWithPageObjectsSteps();
     @Test
     void successfulRegistrationTest() {
-        //Проверка заполения формы
+        step("Заполняем форму и отправляем ее", () -> {
         simpleFormWithPageObjects.openPage()
                 .removeBanner()
                 .setFirstName("TestFirstName")
@@ -21,8 +22,8 @@ public class TestSimpleFormWithPageObjects extends TestBase {
                 .setCity("NCR","Delhi")
                 .uploadPicture("src/test/resources/1.png")
                 .clickSubmit();
-
-        //Проверка данных попапа
+        });
+        step("Проверяем данные в форме", () -> {
         simpleFormWithPageObjects.checkResult("Student Name", "TestFirstName")
                 .checkResult("Student Email", "test@test.test")
                 .checkResult("Gender", "Other")
@@ -33,5 +34,6 @@ public class TestSimpleFormWithPageObjects extends TestBase {
                 .checkResult("Picture", "1.png")
                 .checkResult("Address", "TestCurrentAddress")
                 .checkResult("State and City", "NCR Delhi");
+        });
     }
 }

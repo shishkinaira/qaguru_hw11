@@ -1,7 +1,11 @@
-package com.hw7.tests;
+package com.hw11.tests;
 
-import com.hw7.pages.SimpleFormWithPageObjects;
-import com.hw7.tests.TestBase;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 
@@ -10,11 +14,17 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TestSimpleFormWithComments extends TestBase {
+public class TestSimpleFormWithCommentsLabels {
 
     @Test
+    @Feature("Форма")
+    @Story("Форма Заполнение и проверка данных")
+    @Owner("ishishkina")
+    @DisplayName("Форма Заполнение и проверка данных")
     void successTest() {
-        open("/automation-practice-form");
+
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        open("https://demoqa.com/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
 
@@ -53,5 +63,4 @@ public class TestSimpleFormWithComments extends TestBase {
                 text("1.png"),
                 text("NCR Delhi"));
     }
-
 }

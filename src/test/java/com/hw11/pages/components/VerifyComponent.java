@@ -1,6 +1,5 @@
-package com.hw7.pages.components;
+package com.hw11.pages.components;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
