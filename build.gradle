@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
     testImplementation(
-            'com.codeborne:selenide:6.7.2',
+            'com.codeborne:selenide:6.16.1',
             'org.junit.jupiter:junit-jupiter:5.9.3',
             'io.qameta.allure:allure-selenide:2.22.2',
             'io.github.bonigarcia:webdrivermanager:5.3.3',
